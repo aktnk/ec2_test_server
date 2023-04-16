@@ -52,6 +52,44 @@ Access to this server is only allowed from the global IP address assigned to the
     ```
     /wordkfir # terraform apply
     ```
+  Note  
+  When the execution of terraform apply is completed, the IP address and Public DNS name of the server started will be displayed as shown below.
+  ```
+    Enter a value: yes
+
+
+  Apply complete! Resources: 0 added, 0 changed, 0 destroyed.
+
+  Outputs:
+
+  ami_id = "ami-04d6e43069fd7e366"
+  ec2_global_ips = [
+    "*.*.*.*",
+  ]
+  ec2_public_dns_name = [
+    "ec2-*-*-*-*.ap-northeast-1.compute.amazonaws.com",
+  ]
+  /workdir #
+  ```
+
+  If you use the ping command or browser access, you will see the following.
+  ```
+  > ping ec2-*-*-*-*.ap-northeast-1.compute.amazonaws.com
+
+  ec2-*-*-*-*.ap-northeast-1.compute.amazonaws.com [*.*.*.*]に ping を送信しています 32 バイトのデータ:
+  *.*.*.* からの応答: バイト数 =32 時間 =18ms TTL=227
+  *.*.*.* からの応答: バイト数 =32 時間 =18ms TTL=227
+  *.*.*.* からの応答: バイト数 =32 時間 =18ms TTL=227
+  *.*.*.* からの応答: バイト数 =32 時間 =18ms TTL=227
+
+  *.*.*.* の ping 統計:
+      パケット数: 送信 = 4、受信 = 4、損失 = 0 (0% の損失)、
+  ラウンド トリップの概算時間 (ミリ秒):
+      最小 = 18ms、最大 = 18ms、平均 = 18ms
+  >
+  ```
+  ![Example of display by browser](result.png)
+
 4. terminate ec2 instance
   * Delete the test server.  
   You will be asked to confirm whether you want to execute it or not.
