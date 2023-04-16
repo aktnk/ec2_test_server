@@ -35,6 +35,9 @@ Using Terraform, set up a web server on AWS EC2, using nginx for the web server 
 
 You should modify variables.tf according to the VPC configuration you wish to build.
 
+Note:  
+Access to this server is only allowed from the global IP address assigned to the environment in which terraform is run.
+
 3. run terraform
   * Verify the description of the tf file in the local environment.
     ```
@@ -53,7 +56,7 @@ You should modify variables.tf according to the VPC configuration you wish to bu
   * Delete the test server.  
   You will be asked to confirm whether you want to execute it or not.
     ```
-    terrafor destory
+    /workdir # terraform destory
     ```
 
 # References
