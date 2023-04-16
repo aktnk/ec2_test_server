@@ -69,7 +69,7 @@ Access to this server is only allowed from the global IP address assigned to the
     $ docker-compose stop
     ```
   Note  
-  If you want to restart the terraform container, run `$ docker-compose start
+  If you want to restart the terraform container, run `$ docker-compose start`.
 
 # References
 
