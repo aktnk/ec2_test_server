@@ -31,8 +31,11 @@ Using Terraform, set up a web server on AWS EC2, using nginx for the web server 
     ```
     /workdir # terraform init
     ```
-1. create and edit tf file
-1. run terraform
+2. create and edit tf file
+
+You should modify variables.tf according to the VPC configuration you wish to build.
+
+3. run terraform
   * Verify the description of the tf file in the local environment.
     ```
     /workdir # terraform validate
@@ -46,7 +49,7 @@ Using Terraform, set up a web server on AWS EC2, using nginx for the web server 
     ```
     /wordkfir # terraform apply
     ```
-1. terminate ec2 instance
+4. terminate ec2 instance
   * Delete the test server.  
   You will be asked to confirm whether you want to execute it or not.
     ```
