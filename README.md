@@ -59,6 +59,18 @@ Access to this server is only allowed from the global IP address assigned to the
     /workdir # terraform destory
     ```
 
+5. terminate terraform container
+  * Exit terraform container.
+    ```
+    /workdir # exit
+    ```
+  * Stop terraform container.
+    ```
+    $ docker-compose stop
+    ```
+  Note  
+  If you want to restart the terraform container, run `$ docker-compose start
+
 # References
 
 In constructing this environment, I referred to the following articles.
