@@ -30,5 +30,5 @@ override.tf.json
 
 .terraform.lock.hcl
 .envrc
-.security/*
-!.security/.gitkeep
+source/.security/*
+!source/.security/.gitkeep
