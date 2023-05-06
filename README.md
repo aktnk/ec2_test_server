@@ -35,7 +35,7 @@ Using Terraform, set up a web server on AWS EC2, using nginx for the web server 
 
 You should modify variables.tf according to the VPC configuration you wish to build.
 
-Note:  
+**Note:**  
 Access to this server is only allowed from the global IP address assigned to the environment in which terraform is run.
 
 3. run terraform
@@ -48,11 +48,11 @@ Access to this server is only allowed from the global IP address assigned to the
     /workdir # terraform plan
     ```
   * Apply the changes and start up the test server.  
-  When you are asked if you are sure you want to run it, type ``yes`` if you are sure.
+  When you are asked if you are sure you want to run it, type `yes` if you are sure.
     ```
     /wordkfir # terraform apply
     ```
-  Note  
+  **Note:**  
   When the execution of terraform apply is completed, the IP address and Public DNS name of the server started will be displayed as shown below.
   ```
     Enter a value: yes
@@ -71,8 +71,12 @@ Access to this server is only allowed from the global IP address assigned to the
   ]
   /workdir #
   ```
+4. check
 
   If you use the ping command or browser access, you will see the following.
+
+  * check by ping conmmand
+
   ```
   > ping ec2-*-*-*-*.ap-northeast-1.compute.amazonaws.com
 
@@ -88,16 +92,45 @@ Access to this server is only allowed from the global IP address assigned to the
       最小 = 18ms、最大 = 18ms、平均 = 18ms
   >
   ```
-  ![Example of display by browser](result.png)
 
-4. terminate ec2 instance
+  * check by curl command
+  ```
+  $ curl http://ec2-*-*-*-*.ap-northeast-1.compute.amazonaws.com
+  Request from IP: **.**.**.** at 2023-05-06T16:01:09+09:00
+  ```
+
+  * Access the instance via SSH 
+  
+  ```
+  /workdir # chmod 400 .security/my-net-keypair.id_rsa
+  /workdir # ssh -i .security/my-net-keypair.id_rsa ec2-user@ec2-*-*-*-*.ap-northeast-1.compute.amazonaws.com
+
+        __|  __|_  )
+        _|  (     /   Amazon Linux 2 AMI
+        ___|\___|___|
+
+  https://aws.amazon.com/amazon-linux-2/
+  [ec2-user@ip-**-**-**-** ~]$ ls -la
+  total 12
+  drwx------ 3 ec2-user ec2-user  74 May  6 15:38 .
+  drwxr-xr-x 3 root     root      22 May  6 15:38 ..
+  -rw-r--r-- 1 ec2-user ec2-user  18 Jul 15  2020 .bash_logout
+  -rw-r--r-- 1 ec2-user ec2-user 193 Jul 15  2020 .bash_profile
+  -rw-r--r-- 1 ec2-user ec2-user 231 Jul 15  2020 .bashrc
+  drwx------ 2 ec2-user ec2-user  29 May  6 15:38 .ssh
+  [ec2-user@ip-*-*-*-* ~]$ exit
+  logout
+  Connection to ec2-*-*-*-*.ap-northeast-1.compute.amazonaws.com closed.
+  ```
+
+5. terminate ec2 instance
   * Delete the test server.  
   You will be asked to confirm whether you want to execute it or not.
     ```
     /workdir # terraform destory
     ```
 
-5. terminate terraform container
+6. terminate terraform container
   * Exit terraform container.
     ```
     /workdir # exit
@@ -106,7 +139,7 @@ Access to this server is only allowed from the global IP address assigned to the
     ```
     $ docker-compose stop
     ```
-  Note  
+  **Note**  
   If you want to restart the terraform container, run `$ docker-compose start`.
 
 # References
